@@ -5,6 +5,7 @@
 #include "corteDeControl.h"
 #include "ayudaVectores.h"
 #include "ayudaMatrices.h"
+#include "ayudaStructs.h"
 
 using namespace std;
 
@@ -18,6 +19,12 @@ void imprimirMensajeBusqueda( int pos )
 
 int main()
 {
+    cout << "AYUDA STRUCTS: " << endl;
+    cout << "==============" << endl;
+    ayudaStructs();
+    cout << endl;
+    getchar();
+
     cout << "ORDENAMIENTO DE VECTORES: " << endl;
     cout << "=========================" << endl;
     cout << "Vector orginal: " << endl;
