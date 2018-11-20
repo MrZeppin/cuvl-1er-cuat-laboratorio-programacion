@@ -34,6 +34,8 @@
 		</Compiler>
 		<Unit filename="apareoVectorial.h" />
 		<Unit filename="ayudaMatrices.h" />
+		<Unit filename="ayudaString.h" />
+		<Unit filename="ayudaStructs.h" />
 		<Unit filename="ayudaVectores.h" />
 		<Unit filename="busquedaVectorial.h" />
 		<Unit filename="corteDeControl.h" />
@@ -43,6 +45,7 @@
 		<Extensions>
 			<code_completion />
 			<debugger />
+			<envvars />
 		</Extensions>
 	</Project>
 </CodeBlocks_project_file>
