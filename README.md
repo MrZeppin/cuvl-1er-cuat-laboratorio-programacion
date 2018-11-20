@@ -5,7 +5,7 @@
 - Ordenamientos de vectores
   - Burbujeo
   - Insertion order
-  - Quicks sory
+  - Quicks sort
 - Busquedas en vectores
   - Secuencial
   - Binaria
