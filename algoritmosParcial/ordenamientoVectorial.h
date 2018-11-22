@@ -25,9 +25,9 @@ void bubbleSort( int vec[], int len )
     bool cambio = true;
     int i = 0;
     int jMax = len;
-    //for ( int i = 0; i < len; i++ )
     while ( jMax > 1 && cambio  )
     {
+        cambio = false;
         for ( int j = 0; j < jMax-1; j++ )
         {
             if ( vec[j] > vec[j+1] )
@@ -47,9 +47,9 @@ void bubbleSort( char vec[], int len )
     bool cambio = true;
     int i = 0;
     int jMax = len;
-    //for ( int i = 0; i < len; i++ )
     while ( jMax > 1 && cambio  )
     {
+        cambio = false;
         for ( int j = 0; j < jMax-1; j++ )
         {
             if ( vec[j] > vec[j+1] )
