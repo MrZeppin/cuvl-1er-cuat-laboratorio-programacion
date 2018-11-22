@@ -3,6 +3,23 @@
 
 #include <stdio.h>
 
+void bubbleSortSimple( int vec[], int len )
+{
+    int i = 0;
+    for ( int i = 0; i < len; i++ )
+    {
+        for ( int j = 0; j < len-1; j++ )
+        {
+            if ( vec[j] > vec[j+1] )
+            {
+                int aux = vec[j];
+                vec[j] = vec[j+1];
+                vec[j+1] = aux;
+            }
+        }
+    }
+}
+
 void bubbleSort( int vec[], int len )
 {
     bool cambio = true;

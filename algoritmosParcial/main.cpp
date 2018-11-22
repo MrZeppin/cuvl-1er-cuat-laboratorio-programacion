@@ -48,10 +48,15 @@ int main()
     bubbleSort( vec3, len );
     imprimirVector( vec3, len );
 
+    cout << "Vector ordenado (bubble sort simple): " << endl;
+    int vec6[] = { 20, 30, 2, 40, 50, 2, 60, 3, -1, 10 };
+    bubbleSortSimple( vec6, len );
+    imprimirVector( vec6, len );
+
     cout << "Vector ordenado (shell sort): " << endl;
     int vec4[] = { 20, 30, 2, 40, 50, 2, 60, 3, -1, 10 };
-    bubbleSort( vec3, len );
-    imprimirVector( vec3, len );
+    bubbleSort( vec4, len );
+    imprimirVector( vec4, len );
 
     cout << endl;
     cout << "ORDENAMIENTO DE VECTORES (de chars): " << endl;
