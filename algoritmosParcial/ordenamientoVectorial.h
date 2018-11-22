@@ -22,24 +22,29 @@ void bubbleSortSimple( int vec[], int len )
 
 void bubbleSort( int vec[], int len )
 {
-    bool cambio = true;
+//    int laps = 0;
+//    bool cambio = true;// cambio no hace falta si se achica jMax
     int i = 0;
     int jMax = len;
-    while ( jMax > 1 && cambio  )
+//    while ( jMax > 1 && cambio  )
+    while ( jMax > 1 )
     {
-        cambio = false;
+//        laps++;
+//        cambio = false;
         for ( int j = 0; j < jMax-1; j++ )
         {
+//            laps++;
             if ( vec[j] > vec[j+1] )
             {
                 int aux = vec[j];
                 vec[j] = vec[j+1];
                 vec[j+1] = aux;
-                cambio = true;
+//                cambio = true;
             }
         }
         jMax--;
     }
+//    printf( "bubbleSort LAPS: %i\n", laps );
 }
 
 void bubbleSort( char vec[], int len )
@@ -82,20 +87,22 @@ void insertionOrder( int vec[], int len )
 //https://mathbits.com/MathBits/CompSci/Arrays/Shell.htm
 void shellSort( int vec[], int len)
 {
-    int i, temp, flag = 1;
-    int d = len;
-    while( flag || (d > 1))// boolean flag (true when not equal to 0)
+    int i = 0;
+    int aux = 0;
+    int med = len;
+    bool flag = true;
+    while( flag || med > 1)// boolean flag (true when not equal to 0)
     {
-        flag = 0;// reset flag to 0 to check for future swaps
-        d = (d+1) / 2;
-        for (i = 0; i < (len - d); i++)
+        flag = false;// reset flag to 0 to check for future swaps
+        med = (med+1) / 2;
+        for (i = 0; i < (len - med); i++)
         {
-            if (vec[i + d] < vec[i])
+            if (vec[i + med] < vec[i])
             {
-              temp = vec[i + d];// swap positions i+d and i
-              vec[i + d] = vec[i];
-              vec[i] = temp;
-              flag = 1;// tells swap has occurred
+              aux = vec[i + med];// swap positions i+d and i
+              vec[i + med] = vec[i];
+              vec[i] = aux;
+              flag = true;// tells swap has occurred
             }
         }
     }

@@ -46,11 +46,6 @@ int main()
     bubbleSort( vec3, len );
     imprimirVector( vec3, len );
 
-    cout << "Vector ordenado (bubble sort simple): " << endl;
-    int vec6[] = { 20, 30, 2, 40, 50, 2, 60, 3, -1, 10 };
-    bubbleSortSimple( vec6, len );
-    imprimirVector( vec6, len );
-
     cout << "Vector ordenado (shell sort): " << endl;
     int vec4[] = { 20, 30, 2, 40, 50, 2, 60, 3, -1, 10 };
     shellSort( vec4, len );
@@ -71,7 +66,7 @@ int main()
     cout << "=====================" << endl;
     int buscar = 40;
     cout << "busqueda secuencial de: " << buscar;
-    int pos = busquedaSecuencialTres( vec, len, buscar );
+    int pos = busquedaSecuencial( vec, len, buscar );
     imprimirMensajeBusqueda( pos );
 
     cout << "busqueda binaria de: " << buscar;
