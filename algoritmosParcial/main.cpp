@@ -17,13 +17,13 @@ void imprimirMensajeBusqueda( int pos )
         cout << ", esta en la posicion: " << pos << endl;
 }
 
+
 int main()
 {
     cout << "AYUDA STRUCTS: " << endl;
     cout << "==============" << endl;
     ayudaStructs();
     cout << endl;
-    getchar();
 
     cout << "ORDENAMIENTO DE VECTORES: " << endl;
     cout << "=========================" << endl;
@@ -43,10 +43,25 @@ int main()
     insertionOrder( vec2, len );
     imprimirVector( vec2, len );
 
-    cout << "Vector ordenado (burbujeo): " << endl;
+    cout << "Vector ordenado (bubble sort): " << endl;
     int vec3[] = { 20, 30, 2, 40, 50, 2, 60, 3, -1, 10 };
-    burbujeo( vec3, len );
+    bubbleSort( vec3, len );
     imprimirVector( vec3, len );
+
+    cout << "Vector ordenado (shell sort): " << endl;
+    int vec4[] = { 20, 30, 2, 40, 50, 2, 60, 3, -1, 10 };
+    bubbleSort( vec3, len );
+    imprimirVector( vec3, len );
+
+    cout << endl;
+    cout << "ORDENAMIENTO DE VECTORES (de chars): " << endl;
+    cout << "====================================" << endl;
+    cout << "Vector orginal: " << endl;
+    char vec5[] = { 'c', 'z', 'f', 'm', 'h', 'b', 'j', 'a', 'q', 'x' };
+    imprimirVector( vec5, len );
+    cout << "Vector ordenado (bubble sort): " << endl;
+    bubbleSort( vec5, len );
+    imprimirVector( vec5, len );
 
     cout << endl;
     cout << "BUSQUEDA EN VECTORES: " << endl;

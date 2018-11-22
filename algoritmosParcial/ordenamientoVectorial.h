@@ -3,10 +3,13 @@
 
 #include <stdio.h>
 
-void burbujeo( int vec[], int len )
+void bubbleSort( int vec[], int len )
 {
+    bool cambio = true;
+    int i = 0;
     int jMax = len;
-    for ( int i = 0; i < len; i++ )
+    //for ( int i = 0; i < len; i++ )
+    while ( jMax > 1 && cambio  )
     {
         for ( int j = 0; j < jMax-1; j++ )
         {
@@ -15,8 +18,32 @@ void burbujeo( int vec[], int len )
                 int aux = vec[j];
                 vec[j] = vec[j+1];
                 vec[j+1] = aux;
+                cambio = true;
             }
         }
+        jMax--;
+    }
+}
+
+void bubbleSort( char vec[], int len )
+{
+    bool cambio = true;
+    int i = 0;
+    int jMax = len;
+    //for ( int i = 0; i < len; i++ )
+    while ( jMax > 1 && cambio  )
+    {
+        for ( int j = 0; j < jMax-1; j++ )
+        {
+            if ( vec[j] > vec[j+1] )
+            {
+                char aux = vec[j];
+                vec[j] = vec[j+1];
+                vec[j+1] = aux;
+                cambio = true;
+            }
+        }
+        jMax--;
     }
 }
 
@@ -33,6 +60,28 @@ void insertionOrder( int vec[], int len )
         }
         vec[j+1] = aux;
     }
+}
+
+void shellSort( int vec[], int len)
+{
+    int i, temp, flag = 1;
+    int d = len;
+    while( flag || (d > 1))// boolean flag (true when not equal to 0)
+    {
+        flag = 0;// reset flag to 0 to check for future swaps
+        d = (d+1) / 2;
+        for (i = 0; i < (len - d); i++)
+        {
+            if (vec[i + d] > vec[i])
+            {
+              temp = vec[i + d];// swap positions i+d and i
+              vec[i + d] = vec[i];
+              vec[i] = temp;
+              flag = 1;// tells swap has occurred
+            }
+        }
+    }
+    return;
 }
 
 /**
