@@ -89,7 +89,7 @@ void shellSort( int vec[], int len)
         d = (d+1) / 2;
         for (i = 0; i < (len - d); i++)
         {
-            if (vec[i + d] > vec[i])
+            if (vec[i + d] < vec[i])
             {
               temp = vec[i + d];// swap positions i+d and i
               vec[i + d] = vec[i];

@@ -13,6 +13,36 @@ int busquedaSecuencial( int vec[], int len, int buscar  )
     return -1;
 }
 
+int busquedaSecuencialDos( int vec[], int len, int buscar  )
+{
+    int i = 0;
+    int pos = -1;
+    bool encontrado = false;
+    while ( i < len && encontrado == false )
+    {
+        if ( vec[i] == buscar )
+        {
+            pos = i;
+            encontrado = true;
+        }
+        i++;
+    }
+    return pos;
+}
+
+int busquedaSecuencialTres( int vec[], int len, int buscar  )
+{
+    int i = 0;
+    while ( vec[i] != buscar )
+    {
+        i++;
+    }
+    if ( vec[i] == buscar )
+    {
+        return i;
+    }
+    return -1;
+}
 
 /**
  * necesita que el vector este ordenado ascendientemente

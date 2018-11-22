@@ -20,8 +20,6 @@ void imprimirMensajeBusqueda( int pos )
 
 int main()
 {
-    cout << "AYUDA STRUCTS: " << endl;
-    cout << "==============" << endl;
     ayudaStructs();
     cout << endl;
 
@@ -55,7 +53,7 @@ int main()
 
     cout << "Vector ordenado (shell sort): " << endl;
     int vec4[] = { 20, 30, 2, 40, 50, 2, 60, 3, -1, 10 };
-    bubbleSort( vec4, len );
+    shellSort( vec4, len );
     imprimirVector( vec4, len );
 
     cout << endl;
@@ -73,7 +71,7 @@ int main()
     cout << "=====================" << endl;
     int buscar = 40;
     cout << "busqueda secuencial de: " << buscar;
-    int pos = busquedaSecuencial( vec, len, buscar );
+    int pos = busquedaSecuencialTres( vec, len, buscar );
     imprimirMensajeBusqueda( pos );
 
     cout << "busqueda binaria de: " << buscar;
@@ -85,7 +83,7 @@ int main()
     pos = busquedaSecuencial( vec, len, buscar );
     imprimirMensajeBusqueda( pos );
 
-    cout << "busqueda secuencial de: " << buscar;
+    cout << "busqueda binaria de: " << buscar;
     pos = busquedaBinaria( vec, len, buscar );
     imprimirMensajeBusqueda( pos );
 
