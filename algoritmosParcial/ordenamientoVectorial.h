@@ -79,6 +79,7 @@ void insertionOrder( int vec[], int len )
     }
 }
 
+//https://mathbits.com/MathBits/CompSci/Arrays/Shell.htm
 void shellSort( int vec[], int len)
 {
     int i, temp, flag = 1;
