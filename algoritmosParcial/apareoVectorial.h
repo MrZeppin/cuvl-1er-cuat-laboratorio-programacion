@@ -6,8 +6,9 @@
 
 /**
  * necesita que el vectorer esten ordenados ascendientemente
+ * lenC = lenA + lenB
  */
-void apareoDeVectores( int vecA[], int lenA, int vecB[], int lenB, int vecC[], int lenC )
+void apareoDeVectores( int vecA[], int lenA, int vecB[], int lenB, int vecC[])
 {
     int a = 0;
     int b = 0;
@@ -26,14 +27,12 @@ void apareoDeVectores( int vecA[], int lenA, int vecB[], int lenB, int vecC[], i
         }
         c++;
     }
-    while ( a < lenA )
-    {
+    while ( a < lenA ) {
         vecC[c] = vecA[a];
         a++;
         c++;
     }
-    while ( b < lenB )
-    {
+    while ( b < lenB ) {
         vecC[c] = vecB[b];
         b++;
         c++;

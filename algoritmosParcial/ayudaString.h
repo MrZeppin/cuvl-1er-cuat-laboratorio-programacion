@@ -2,7 +2,6 @@
 #define AYUDASTRING_H_INCLUDED
 
 #include <stdio.h>
-#include <istream>
 #include <string.h>
 
 using namespace std;
@@ -15,12 +14,12 @@ void ingreseoVecChar()
     cout << "usted escribio: " << palabra << endl;
     cout << endl;
 
-    cout << "escriba otra cosa: ";
-    string cadena;
-    cin >> cadena;
-    strncpy( palabra, cadena.c_str(), 200 );// no funco piola
-    cout << "usted escribio: " << palabra << endl;
-    cout << endl;
+//    cout << "escriba algo: ";
+//    string cadena;
+//    cin >> cadena;
+//    strncpy( palabra, cadena.c_str(), 200 );// no funco piola
+//    cout << "usted escribio: " << palabra << endl;
+//    cout << endl;
 }
 
 #endif // AYUDASTRING_H_INCLUDED

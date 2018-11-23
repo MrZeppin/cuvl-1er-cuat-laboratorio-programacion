@@ -89,18 +89,18 @@ void shellSort( int vec[], int len)
 {
     int i = 0;
     int aux = 0;
-    int med = len;
+    int otro = len;
     bool flag = true;
-    while( flag || med > 1)// boolean flag (true when not equal to 0)
+    while( flag || otro > 1)// boolean flag (true when not equal to 0)
     {
         flag = false;// reset flag to 0 to check for future swaps
-        med = (med+1) / 2;
-        for (i = 0; i < (len - med); i++)
+        otro = (otro+1) / 2;
+        for (i = 0; i < (len - otro); i++)
         {
-            if (vec[i + med] < vec[i])
+            if (vec[i + otro] < vec[i])
             {
-              aux = vec[i + med];// swap positions i+d and i
-              vec[i + med] = vec[i];
+              aux = vec[i + otro];// swap positions i+d and i
+              vec[i + otro] = vec[i];
               vec[i] = aux;
               flag = true;// tells swap has occurred
             }

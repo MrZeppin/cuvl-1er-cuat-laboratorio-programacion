@@ -6,6 +6,7 @@
 #include "ayudaVectores.h"
 #include "ayudaMatrices.h"
 #include "ayudaStructs.h"
+#include "ayudaString.h"
 
 using namespace std;
 
@@ -20,6 +21,9 @@ void imprimirMensajeBusqueda( int pos )
 
 int main()
 {
+//    ingreseoVecChar();
+//    return 0;
+
     ayudaStructs();
     cout << endl;
 
@@ -96,7 +100,7 @@ int main()
     cout << "vecB: ";
     imprimirVector( vecB, lenB );
     cout << "vecC: ";
-    apareoDeVectores( vecA, lenA, vecB, lenB, vecC, lenC );
+    apareoDeVectores( vecA, lenA, vecB, lenB, vecC );
     imprimirVector( vecC, lenC );
 
     cout << endl;
