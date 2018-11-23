@@ -110,12 +110,15 @@ double calcularFactura( ST_VENTA ventas[MESES][DIAS], ST_PRODUCTO productos[PROD
     {
         int codigo = ventas[mes][i].codigo;
         int indiceProd = buscarProducto( productos, codigo );
+
         ST_PRODUCTO ventaProd = productos[indiceProd];
         int ventaCantidad = ventas[mes][i].cantidad;
-        fact += ventaProd.precio * ventaCantidad ;
+
+        fact += ventaProd.precio * ventaCantidad;
     }
     return fact;
 }
+
 int mesConMayorFactura( ST_VENTA ventas[MESES][DIAS], ST_PRODUCTO productos[PRODUCTOS_CANT] )
 {
     int mayorFactMes = 0;
@@ -136,19 +139,19 @@ int mesConMayorFactura( ST_VENTA ventas[MESES][DIAS], ST_PRODUCTO productos[PROD
 void llenarProductos( ST_PRODUCTO productos[PRODUCTOS_CANT] )
 {
     int i = 0;
-    productos[i].codigo = 32;
+    productos[i].codigo = 50;
     strncpy( productos[i].nombre, "Vinagre", NOMBRE_CANT );
-    productos[i].precio = 100;
+    productos[i].precio = 10;
 
     i++;
     productos[i].codigo = 15;
     strncpy( productos[i].nombre, "Sal", NOMBRE_CANT );
-    productos[i].precio = 20;
+    productos[i].precio = 5;
 
     i++;
     productos[i].codigo = 2;
     strncpy( productos[i].nombre, "Harina", NOMBRE_CANT );
-    productos[i].precio = 30;
+    productos[i].precio = 4;
 
     i++;
     productos[i].codigo = 20;
@@ -170,8 +173,9 @@ void llenarVentas( ST_VENTA ventas[MESES][DIAS], ST_PRODUCTO productos[PRODUCTOS
         for ( int j = 0; j < DIAS; j++ )
         {
             ventas[i][j].fecha = 20180000 + i * 100 + j;
+            // PRODUCTOS_CANT - 1 signfica que no se venden tomates
+            ventas[i][j].codigo = productos[ rand() % (PRODUCTOS_CANT-1) ].codigo;
             ventas[i][j].cantidad =  rand() % 10;
-            ventas[i][j].codigo = productos[ rand() % PRODUCTOS_CANT ].codigo;
         }
     }
 }
@@ -186,11 +190,18 @@ int main()
 
     ordenarProductos( productos );
 
+    cout << "MESES Y DINERO" << endl;
+    for ( int i=0; i < MESES; i++  )
+    {
+        cout << "- mes " <<  i+1 << " se gano $" << calcularFactura( ventas, productos, i ) << endl;
+    }
+
+    cout << endl;
     int indiceMenosVendido = productotMenosVendido( ventas, productos );
     cout << "- Producto menos vendido: " << productos[indiceMenosVendido].nombre << endl;
 
     int mesMayorFactura = mesConMayorFactura( ventas, productos );
-    cout << "- Mes con mayor factura: " << mesMayorFactura << endl;
+    cout << "- Mes con mayor factura: " << mesMayorFactura+1 << endl;
 
     return 0;
 }
