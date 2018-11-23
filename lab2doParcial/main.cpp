@@ -180,6 +180,15 @@ void llenarVentas( ST_VENTA ventas[MESES][DIAS], ST_PRODUCTO productos[PRODUCTOS
     }
 }
 
+void imprimirVentas( ST_VENTA ventas[MESES][DIAS], ST_PRODUCTO productos[PRODUCTOS_CANT] )
+{
+    cout << "MESES Y DINERO" << endl;
+    for ( int i=0; i < MESES; i++  )
+    {
+        cout << "- mes " <<  i+1 << " se gano $" << calcularFactura( ventas, productos, i ) << endl;
+    }
+}
+
 int main()
 {
     ST_PRODUCTO productos[PRODUCTOS_CANT];
@@ -190,11 +199,7 @@ int main()
 
     ordenarProductos( productos );
 
-    cout << "MESES Y DINERO" << endl;
-    for ( int i=0; i < MESES; i++  )
-    {
-        cout << "- mes " <<  i+1 << " se gano $" << calcularFactura( ventas, productos, i ) << endl;
-    }
+    imprimirVentas( ventas, productos );
 
     cout << endl;
     int indiceMenosVendido = productotMenosVendido( ventas, productos );
