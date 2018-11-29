@@ -29,6 +29,26 @@ int maxTempUnMes( float temps[MESES][DIAS], int mes )
     return maxTempPos;
 }
 
+// mes y anio se usan para el punto c
+void maxTempUnAnio( float temps[MESES][DIAS], int &maxTempMes, int &maxTempDia )
+{
+    int maxTemp = temps[0][0];
+    // aca no lo incializo ningun for en 1 porque sino saltearia todo un mes y el primer dia de todos los otros meses
+    for ( int i = 0; i < MESES; i++ )
+    {
+        for ( int j = 0; j < DIAS; j++ )
+        {
+            int tempActual = temps[i][j];
+            if ( tempActual > maxTemp )
+            {
+                maxTemp = tempActual;
+                maxTempMes = i;
+                maxTempDia = j;
+            }
+        }
+    }
+}
+
 void imprimirMaxTempTodosLosMeses( float temps[MESES][DIAS] )
 {
     cout << "MAX TEMPS MENSUALES" << endl;
@@ -45,10 +65,12 @@ void llenarTemperaturas( float temps[MESES][DIAS] )
     {
         for ( int j = 0; j < DIAS; j++ )
         {
-            if ( j == 8)
+            if ( i == 3 && j == 3 )
                 temps[i][j] = 31;
+            else if ( j == 8)
+                temps[i][j] = 26;
             else
-                temps[i][j] = 2;
+                temps[i][j] = 0;
         }
     }
 }
@@ -61,7 +83,7 @@ void imprimirTemperaturas( float temps[MESES][DIAS] )
         printf("%4i", i+1);
         for ( int j = 0; j < DIAS; j++ )
         {
-            printf(", %0.1f-C", temps[i][j]);
+            printf(", %4.1f-C", temps[i][j]);
         }
         cout << endl;
     }
@@ -74,5 +96,10 @@ int main()
     imprimirTemperaturas( temperaturas );
     cout << endl;
     imprimirMaxTempTodosLosMeses( temperaturas );
+    cout << endl;
+    int m;
+    int d;
+    maxTempUnAnio( temperaturas, m, d );
+    cout << "Max temperatura en todo el anio: " << temperaturas[m][d] << "-C en el mes " << m << ", dia " << d << endl;
     return 0;
 }
