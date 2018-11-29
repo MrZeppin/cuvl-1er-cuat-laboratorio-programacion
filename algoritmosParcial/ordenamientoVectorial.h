@@ -143,6 +143,7 @@ void quickSort( int vec[], int p, int f )
         }
     }
     while ( i <= j );
+
     if ( p <= j )
     {
         quickSort(vec, p, j);

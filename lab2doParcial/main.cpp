@@ -12,7 +12,6 @@
 
 using namespace std;
 
-
 struct ST_VENTA
 {
     int fecha;//AAAAMMDD
@@ -27,21 +26,42 @@ struct ST_PRODUCTO
     double precio;
 };
 
+//void ordenarProductos( ST_PRODUCTO productos[PRODUCTOS_CANT] )
+//{
+//    // burbujeo simple
+//    for ( int i=0; i < PRODUCTOS_CANT; i++  )
+//    {
+//        for ( int j = 0; j < PRODUCTOS_CANT; j++ )
+//        {
+//            if ( productos[j].codigo > productos[j+1].codigo )
+//            {
+//                ST_PRODUCTO aux = productos[j];
+//                productos[j] = productos[j+1];
+//                productos[j+1] = aux;
+//            }
+//        }
+//    }
+//}
 
 void ordenarProductos( ST_PRODUCTO productos[PRODUCTOS_CANT] )
 {
-    // burbujeo simple
-    for ( int i=0; i < PRODUCTOS_CANT; i++  )
+    // burbujeo pupu
+    bool cambio = true;
+    int jMax = PRODUCTOS_CANT;
+    while ( cambio )
     {
-        for ( int j = 0; j < PRODUCTOS_CANT; j++ )
+        cambio = false;
+        for ( int j = 0; j < PRODUCTOS_CANT-1; j++ )
         {
             if ( productos[j].codigo > productos[j+1].codigo )
             {
                 ST_PRODUCTO aux = productos[j];
                 productos[j] = productos[j+1];
                 productos[j+1] = aux;
+                cambio = true;
             }
         }
+        jMax--;
     }
 }
 
@@ -91,7 +111,7 @@ int productotMenosVendido( ST_VENTA ventas[MESES][DIAS], ST_PRODUCTO productos[P
 {
     int menosCantProd = 0;
     int menosCant = calcularCantidad( ventas, productos[0].codigo );
-    for ( int i=0; i < PRODUCTOS_CANT; i++  )
+    for ( int i = 1; i < PRODUCTOS_CANT; i++  )
     {
         int curCant = calcularCantidad( ventas, productos[i].codigo );
         if ( curCant < menosCant )
@@ -123,7 +143,7 @@ int mesConMayorFactura( ST_VENTA ventas[MESES][DIAS], ST_PRODUCTO productos[PROD
 {
     int mayorFactMes = 0;
     double mayorFact = calcularFactura( ventas, productos, 0);
-    for ( int i=0; i < MESES; i++  )
+    for ( int i = 1; i < MESES; i++  )
     {
         double curFact = calcularFactura( ventas, productos, i);
         if ( curFact > mayorFact)
@@ -139,22 +159,22 @@ int mesConMayorFactura( ST_VENTA ventas[MESES][DIAS], ST_PRODUCTO productos[PROD
 void llenarProductos( ST_PRODUCTO productos[PRODUCTOS_CANT] )
 {
     int i = 0;
-    productos[i].codigo = 50;
+    productos[i].codigo = 2145;
     strncpy( productos[i].nombre, "Vinagre", NOMBRE_CANT );
     productos[i].precio = 10;
 
     i++;
-    productos[i].codigo = 15;
+    productos[i].codigo = 1234;
     strncpy( productos[i].nombre, "Sal", NOMBRE_CANT );
     productos[i].precio = 5;
 
     i++;
-    productos[i].codigo = 2;
+    productos[i].codigo = 1194;
     strncpy( productos[i].nombre, "Harina", NOMBRE_CANT );
     productos[i].precio = 4;
 
     i++;
-    productos[i].codigo = 20;
+    productos[i].codigo = 9453;
     strncpy( productos[i].nombre, "Tomates", NOMBRE_CANT );
     productos[i].precio = 7;
 }
@@ -180,6 +200,7 @@ void llenarVentas( ST_VENTA ventas[MESES][DIAS], ST_PRODUCTO productos[PRODUCTOS
     }
 }
 
+// no lo pedia el parcial es para testear
 void imprimirVentas( ST_VENTA ventas[MESES][DIAS], ST_PRODUCTO productos[PRODUCTOS_CANT] )
 {
     cout << "MESES Y DINERO" << endl;
@@ -187,6 +208,17 @@ void imprimirVentas( ST_VENTA ventas[MESES][DIAS], ST_PRODUCTO productos[PRODUCT
     {
         cout << "- mes " <<  i+1 << " se gano $" << calcularFactura( ventas, productos, i ) << endl;
     }
+    cout << endl;
+}
+
+void imprimirProductos( ST_PRODUCTO productos[PRODUCTOS_CANT] )
+{
+    cout << "PRODUCTOS" << endl;
+    for ( int i = 0; i < PRODUCTOS_CANT; i++ )
+    {
+        cout << "- "<< productos[i].codigo << ": " << productos[i].nombre << endl;
+    }
+    cout << endl;
 }
 
 int main()
@@ -199,9 +231,10 @@ int main()
 
     ordenarProductos( productos );
 
+    imprimirProductos( productos );
     imprimirVentas( ventas, productos );
 
-    cout << endl;
+    cout << "RESUMEN" << endl;
     int indiceMenosVendido = productotMenosVendido( ventas, productos );
     cout << "- Producto menos vendido: " << productos[indiceMenosVendido].nombre << endl;
 
