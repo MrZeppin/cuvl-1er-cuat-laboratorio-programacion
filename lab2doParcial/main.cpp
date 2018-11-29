@@ -100,7 +100,7 @@ int calcularCantidad(  ST_VENTA ventas[MESES][DIAS], int codigo )
         {
             if ( ventas[i][j].codigo == codigo )
             {
-                cant++;
+                cant += ventas[i][j].cantidad;
             }
         }
     }
