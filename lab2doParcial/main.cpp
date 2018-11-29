@@ -107,7 +107,7 @@ int calcularCantidad(  ST_VENTA ventas[MESES][DIAS], int codigo )
     return cant;
 }
 
-int productotMenosVendido( ST_VENTA ventas[MESES][DIAS], ST_PRODUCTO productos[PRODUCTOS_CANT]  )
+int productosMenosVendido( ST_VENTA ventas[MESES][DIAS], ST_PRODUCTO productos[PRODUCTOS_CANT]  )
 {
     int menosCantProd = 0;
     int menosCant = calcularCantidad( ventas, productos[0].codigo );
@@ -121,6 +121,35 @@ int productotMenosVendido( ST_VENTA ventas[MESES][DIAS], ST_PRODUCTO productos[P
         }
     }
     return menosCantProd;
+}
+
+void losTresProductosMenosVendido( ST_VENTA ventas[MESES][DIAS], ST_PRODUCTO productos[PRODUCTOS_CANT], int pos[3] )
+{
+    int TRES = 3;
+    int cants[TRES];
+    for ( int i = 0; i < TRES; i++ )
+    {
+        pos[i] = i;
+        cants[i] = calcularCantidad( ventas, productos[i].codigo );
+    }
+    int j = 0;
+    bool menor = false;
+    for ( int i = TRES; i < PRODUCTOS_CANT; i++  )
+    {
+        int curCant = calcularCantidad( ventas, productos[i].codigo );
+        j = 0;
+        menor = false;
+        while ( j < TRES && menor == false )
+        {
+            if ( curCant < cants[j] )
+            {
+                cants[j] = curCant;
+                pos[j] = i;
+                menor = true;
+            }
+            j++;
+        }
+    }
 }
 
 double calcularFactura( ST_VENTA ventas[MESES][DIAS], ST_PRODUCTO productos[PRODUCTOS_CANT], int mes )
@@ -235,11 +264,19 @@ int main()
     imprimirVentas( ventas, productos );
 
     cout << "RESUMEN" << endl;
-    int indiceMenosVendido = productotMenosVendido( ventas, productos );
+    int indiceMenosVendido = productosMenosVendido( ventas, productos );
     cout << "- Producto menos vendido: " << productos[indiceMenosVendido].nombre << endl;
 
     int mesMayorFactura = mesConMayorFactura( ventas, productos );
     cout << "- Mes con mayor factura: " << mesMayorFactura+1 << endl;
+
+    cout << endl;
+    cout << "RESUMEN 2" << endl;
+    int posMenos[3];// un array con posiciones de los productos menos vendidos
+    losTresProductosMenosVendido( ventas, productos, posMenos );
+    cout << productos[posMenos[0]].nombre << endl;
+    cout << productos[posMenos[1]].nombre << endl;
+    cout << productos[posMenos[2]].nombre << endl;
 
     return 0;
 }
