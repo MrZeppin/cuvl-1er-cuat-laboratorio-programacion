@@ -22,29 +22,63 @@ void bubbleSortSimple( int vec[], int len )
 
 void bubbleSort( int vec[], int len )
 {
-//    int laps = 0;
-//    bool cambio = true;// cambio no hace falta si se achica jMax
     int i = 0;
-    int jMax = len;
-//    while ( jMax > 1 && cambio  )
-    while ( jMax > 1 )
+    bool cambio = true;
+    while ( cambio  )
     {
-//        laps++;
-//        cambio = false;
-        for ( int j = 0; j < jMax-1; j++ )
+        cambio = false;
+        for ( int j = 0; j < len-1; j++ )
         {
-//            laps++;
             if ( vec[j] > vec[j+1] )
             {
                 int aux = vec[j];
                 vec[j] = vec[j+1];
                 vec[j+1] = aux;
-//                cambio = true;
+                cambio = true;
+            }
+        }
+    }
+}
+
+void bubbleSort2( int vec[], int len )
+{
+    int i = 0;
+    int jMax = len;
+    while ( jMax > 1 )
+    {
+        for ( int j = 0; j < jMax-1; j++ )
+        {
+            if ( vec[j] > vec[j+1] )
+            {
+                int aux = vec[j];
+                vec[j] = vec[j+1];
+                vec[j+1] = aux;
             }
         }
         jMax--;
     }
-//    printf( "bubbleSort LAPS: %i\n", laps );
+}
+
+void bubbleSort3( int vec[], int len )
+{
+    int i = 0;
+    int jMax = len;
+    bool cambio = true;
+    while ( jMax > 1 && cambio  )
+    {
+        cambio = false;
+        for ( int j = 0; j < jMax-1; j++ )
+        {
+            if ( vec[j] > vec[j+1] )
+            {
+                int aux = vec[j];
+                vec[j] = vec[j+1];
+                vec[j+1] = aux;
+                cambio = true;
+            }
+        }
+        jMax--;
+    }
 }
 
 void bubbleSort( char vec[], int len )

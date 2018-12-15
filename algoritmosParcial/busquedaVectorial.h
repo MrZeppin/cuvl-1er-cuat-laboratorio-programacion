@@ -56,7 +56,9 @@ int busquedaBinaria( int vec[], int len, int buscar )
     med = 0;
     while ( inf < sup )
     {
-        med = (sup-1) / 2 + inf / 2;
+        //med = (sup-1) / 2 + inf / 2;
+        //med = (sup) / 2 + inf / 2;
+        med = (sup+inf) / 2;
         if ( buscar == vec[med] )
         {
             return med;

@@ -8,11 +8,14 @@ using namespace std;
 
 void ingreseoVecChar()
 {
-    cout << "escriba algo: ";
-    char palabra[200];
-    cin.getline( palabra, 200 );
-    cout << "usted escribio: " << palabra << endl;
-    cout << endl;
+    for ( int i = 0; i < 2; i++ )
+    {
+        cout << i+1 << ". escriba algo: ";
+        char palabra[200];
+        cin.getline( palabra, 200 );
+        cout << "usted escribio: " << palabra << endl;
+        cout << endl;
+    }
 
 //    cout << "escriba algo: ";
 //    string cadena;
